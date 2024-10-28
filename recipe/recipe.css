@@ -74,29 +74,3 @@ nav ul li a{
     transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
-
-.recipe-hero{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 10rem 14rem;
-    gap: 4rem;
-}
-
-
-.recipe-img img{
-    width: 100%;
-    margin: 0 auto;
-}
-
-.prep-ingredients{
-    background: rgb(41, 47, 87);
-    padding: 2rem;
-    border-radius: 10px;
-}
-
-.recipe-container{
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    margin: 10rem 14rem;
-    gap: 4rem;
-}
