@@ -67,4 +67,3 @@ document.addEventListener("DOMContentLoaded", () => {
       fetchRecipe().then(recipe => displayRecipe(recipe));
     }
   });
-  
