@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./style.css" />
     <link rel="icon" type="image/x-icon" href="./images/logo-egg.png" />
     <title>Food Recipes</title>
   </head>
@@ -50,37 +50,13 @@
       </div>
 
       <div class="popular-recipes">
-        <h2>POPULAR RECIPES</h2>
-        <div class="recipes-container">
-          <div class="recipe-card">
-            <img src="./images/sample.jpg" alt="Recipe Image 1" />
-            <h3>Egg</h3>
-            <p>
-              <strong>Ingredients:</strong> Ingredient 1, Ingredient 2,
-              Ingredient 3
-            </p>
-            <p><strong>Prep time:</strong> 30 minutes</p>
-          </div>
-          <div class="recipe-card">
-            <img src="./images/sample.jpg" alt="Recipe Image 2" />
-            <h3>Egg</h3>
-            <p>
-              <strong>Ingredients:</strong> Ingredient A, Ingredient B,
-              Ingredient C
-            </p>
-            <p><strong>Prep time:</strong> 20 minutes</p>
-          </div>
-          <div class="recipe-card">
-            <img src="./images/sample.jpg" alt="Recipe Image 3" />
-            <h3>Egg</h3>
-            <p>
-              <strong>Ingredients:</strong> Ingredient X, Ingredient Y,
-              Ingredient Z
-            </p>
-            <p><strong>Prep time:</strong> 40 minutes</p>
-          </div>
-        </div>
+        <h2>RECIPES YOU MIGHT LIKE</h2>
+        <!-- Recipe cards will be dynamically inserted here -->
+        <div class="recipes-container"></div>
       </div>
     </main>
+
+    <!-- Add the script here if it's in a separate file -->
+    <script src="./js/random-recipe.js" async></script>
   </body>
 </html>
