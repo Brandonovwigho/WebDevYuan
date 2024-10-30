@@ -54,9 +54,9 @@ app.get('/login', (req, res) => {
 app.get('/signup', (req, res) => {
   res.sendFile(path.join(__dirname, './public/html/login-reg.html'));
 })
-app.get('/signup-complete', (req, res) => {
+/* app.get('/signup-complete', (req, res) => {
   res.sendFile(path.join(__dirname, './public/html/signup_complete.html'));
-})
+}) */
 app.all('*', (req, res) => {
   res.send('Error 404 - PAGE NOT FOUND');
 })
