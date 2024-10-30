@@ -6,9 +6,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (recipeId) {
         try {
             // Fetch the recipe details using the ID
-            const response = await fetch(
-                `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`
-            );
+            const response = await fetch('/api/recipe-lookup', {
+                method: 'POST', // Use POST to send data in the body
+                headers: {
+                    'Content-Type': 'application/json', // Set headers to indicate JSON format
+                },
+                body: JSON.stringify({ recipeId }) // Send recipeID in the request body
+            });
             const data = await response.json();
             const recipe = data.meals[0];
 

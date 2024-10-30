@@ -1,17 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const recipesContainer = document.querySelector(".recipes-container");
+    console.log("DOM fully loaded and parsed");
+    const recipesContainer = document.querySelector(".recipes-container");
 
   // Function to fetch a random recipe from the API
-  async function fetchRecipe() {
-      try {
-          const response = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
-          const data = await response.json();
-          console.log(data)
-          return data.meals[0];
-      } catch (error) {
-          console.error("Error fetching recipe:", error);
-      }
-  }
+    async function fetchRecipe() {
+        console.log("fetch function");
+        try {
+            const response = await fetch('/api/random-recipe');
+            const data = await response.json();
+            console.log("Data here:");
+            console.log(data);
+            return data.meals[0];
+        } catch (error) {
+            console.error("Error fetching recipe:", error);
+        }
+    }
 
   // Function to display a recipe card
   function displayRecipe(recipe) {
@@ -32,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Add a click event listener for each card
       recipeCard.addEventListener("click", () => {
-        window.location.href = `./recipe/recipe.html?id=${recipeId}`;
+        window.location.href = `/recipe.html?id=${recipeId}`;
       });
 
       // Append the recipe card to the container

@@ -4,7 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const app = express();
-app.use(session({secret:"BankApp!@#$%^&*()1234567890", resave:false, saveUninitialized:true}))
+app.use(session({secret:"RecipeSite!@#$%^&*()1234567890", resave:false, saveUninitialized:true}))
 
 // Connect to the SQLite database
 const db = require('./database');
@@ -29,6 +29,29 @@ app.use(express.static(path.join(__dirname, 'public')));
   res.sendFile(path.join(__dirname, 'public', 'login_registration.html'));
 }); */
 
+app.get('/api/random-recipe', async (req, res) => {
+  try {
+      const response = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
+      const data = await response.json();
+      res.json(data);
+  } catch (error) {
+      console.error('Error fetching recipe:', error);
+      res.status(500).json({ error: 'Failed to fetch recipe' });
+  }
+});
+app.post('/api/recipe-lookup', async(req,res) =>{
+  const {recipeId} = req.body;
+  try {
+    const response = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`
+    );
+    const data = await response.json();
+    res.json(data);
+} catch (error) {
+    console.error('Error fetching recipe:', error);
+    res.status(500).json({ error: 'Failed to fetch recipe' });
+}
+})
 app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, './public/login-reg.html'));
 })
