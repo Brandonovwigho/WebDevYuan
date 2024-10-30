@@ -24,10 +24,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 //const loginReg = require('./requests/login_registration');
 //app.use(loginReg); // File to manage all requests associated with the login/registration page.
 
-// Serve login_registration.html as the default startup HTML
-/*app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'login_registration.html'));
-}); */
 
 app.get('/api/random-recipe', async (req, res) => {
   try {
