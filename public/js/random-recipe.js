@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Add a click event listener for each card
       recipeCard.addEventListener("click", () => {
-        window.location.href = `/recipe.html?id=${recipeId}`;
+        window.location.href = `/html/recipe.html?id=${recipeId}`;
       });
 
       // Append the recipe card to the container

@@ -21,13 +21,61 @@ router.post('/login', (req, res) => {
             username: row.username,   // Saves username.
             email: row.email // Saves email
           };
-          res.redirect('/');
+          res.status(200).json({ redirect: '/' });
         });
       } 
       else {
         res.status(401).json({ error: 'Incorrect username or password.' });
       }
     });
+});
+
+router.post('/signup', (req, res) => {
+  const { email, username, password } = req.body;
+
+  db.run('INSERT INTO login (email, username, password) VALUES (?, ?, ?)', [email, username, password], function(err) {
+      if (err) {
+          console.error('Error inserting into database:', err.message);
+          return res.status(500).send('Internal Server Error');
+      }
+      res.json({ redirect: '/html/signup_complete.html' });
+  });
+});
+
+
+// Check if email is already in use.
+router.post('/validate-email', (req, res) => {
+  const { email } = req.body;
+  db.get('SELECT * FROM login WHERE lower(email) = ?', [email.toLowerCase()], (err, row) => {
+    if (err) {
+      console.error('Error querying database:', err.message);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    if (row) {
+      res.sendStatus(409); // Send status 409 Conflict if email already exists
+    } else {
+      res.sendStatus(200); // Send status 200 OK if email is available
+    }
+  });
+});
+
+// Check if username is already in use.
+router.post('/validate-username', (req, res) => {
+  const { username } = req.body;
+
+  db.get('SELECT * FROM login WHERE lower(username) = ?', [username.toLowerCase()], (err, row) => {
+    if (err) {
+      console.error('Error querying database:', err.message);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    if (row) {
+      res.sendStatus(409); // Send status 409 Conflict if username already exists
+    } else {
+      res.sendStatus(200); // Send status 200 OK if username is available
+    }
+  });
 });
 
 module.exports = router;

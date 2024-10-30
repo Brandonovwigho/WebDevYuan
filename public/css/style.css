@@ -9,6 +9,10 @@ body{
     margin: 0;
     padding: 0;
 }
+a{
+    text-decoration: none;
+    color: white;
+}
 
 h1, h2, h3, 
 h4 ,h5 ,h6{
@@ -223,19 +227,19 @@ nav ul li a{
     color: #0073E6;
 }
 
-/* Login CSS */
-.login-container {
+/* Login and Sign-Up CSS */
+.login-reg {
     text-align: center;
     margin-top: 150px;
   }
   
-  .login-container h1 {
+  .login-reg h1 {
     color: #FFC300;
     font-size: 2rem;
     margin-bottom: 20px;
   }
   
-  .login-container input {
+  .login-reg input {
     display: block;
     margin: 10px auto;
     padding: 10px;
@@ -244,21 +248,24 @@ nav ul li a{
     border-radius: 30px;
     font-size: 1rem;
     outline: none;
-    background-color: #f9f8f6;
+    background-color: #ffffffeb;
     color: #333;
     padding-left: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
-  .login-container input::placeholder {
+  .login-reg input::placeholder {
     color: #aaa;
   }
   
-  .login-container input:focus {
+  .login-reg input:focus {
+    border: solid 1px;
     border-color: #FFD60A;
+    background-color: #f9f8f6;
+    transition: all 0.25s ease-in-out;
   }
   
-  .login-button {
+  .submit-button {
     padding: 10px 20px;
     margin-top: 10px;
     background-color: #FFC300;
@@ -270,20 +277,35 @@ nav ul li a{
     transition: background-color 0.3s ease, transform 0.3s ease;
   }
   
-  .login-button:hover {
+  .submit-button:hover {
     background-color: #FFD60A;
     transform: translateY(-2px);
   }
 
-.login-container p{
+.login-reg p{
     font-size: 16px;
 }
-.login-container a{
+.login-reg a{
     text-decoration: underline;
     color: #FFC300;
 }
-.login-container a:hover{
+.login-reg a:hover{
     cursor: pointer;
     color: #ffc400b8;
 }
-  
+
+/* Additional styles for fade effect */
+.login-reg div {
+    min-width: 40vw;
+    max-width: 40vw;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.25s ease; /* Transition for fade effect */
+    display: none; /* Start as not displayed */
+}
+
+.login-reg div.active {
+    display: block; /* Show the active form */
+    opacity: 1; /* Fade in */
+}

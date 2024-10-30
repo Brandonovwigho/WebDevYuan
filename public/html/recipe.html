@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/style.css" />
+    <title>Food Recipes</title>
+    <link rel="stylesheet" href="/css/recipe.css" />
     <link rel="icon" type="image/x-icon" href="/images/logo-egg.png" />
-    <title>Login</title>
   </head>
   <body>
+    <script src="/js/recipe.js"></script>
     <header>
       <div class="header-container">
+        <a href="/">
         <div class="logo-container">
           <img src="/images/logo-egg.png" />
           <h3>Recipe Book</h3>
         </div>
+        </a>
         <div class="nav-container">
           <nav>
             <ul>
@@ -21,21 +23,11 @@
               <li><a href="#">Recipes</a></li>
             </ul>
           </nav>
+
           <button class="button">Search Recipes</button>
         </div>
       </div>
     </header>
-
-    <main>
-      <div class="login-container">
-        <h1>Login to Your Account</h1>
-        <form>
-          <input type="text" id="username" placeholder="Username" required />
-          <input type="password" id="password" placeholder="Password" required />
-          <button type="submit" class="login-button">Login</button>
-        </form>
-        <p>Don't have an account? <a onclick="signup()">Sign-Up</a></p>
-      </div>
-    </main>
+    <div class="recipe-container"></div>
   </body>
 </html>

@@ -21,8 +21,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/user', userRoute);
 
 // Connect 'requests' files
-//const loginReg = require('./requests/login_registration');
-//app.use(loginReg); // File to manage all requests associated with the login/registration page.
+const loginReg = require('./requests/login-reg-req');
+app.use(loginReg); // File to manage all requests associated with the login/registration page.
 
 
 app.get('/api/random-recipe', async (req, res) => {
@@ -49,13 +49,13 @@ app.post('/api/recipe-lookup', async(req,res) =>{
 }
 })
 app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/login-reg.html'));
+  res.sendFile(path.join(__dirname, './public/html/login-reg.html'));
 })
-app.get('/register', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/login-reg.html'));
+app.get('/signup', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/html/login-reg.html'));
 })
-app.get('/registrationComplete', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/regComplete.html'));
+app.get('/signup-complete', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/html/signup_complete.html'));
 })
 app.all('*', (req, res) => {
   res.send('Error 404 - PAGE NOT FOUND');
