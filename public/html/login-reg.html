@@ -24,6 +24,10 @@
             </ul>
           </nav>
           <button class="button">Search Recipes</button>
+          <div id="auth-buttons">
+            <a href="/login" class="auth-button">Login</a>
+            <a href="/signup" class="auth-button">Sign-Up</a>
+          </div>
         </div>
       </div>
     </header>
@@ -56,6 +60,36 @@
     </main>
 
     <script>
+      document.addEventListener("DOMContentLoaded", () => {
+      fetch('/auth-status')
+        .then(response => response.json())
+        .then(data => {
+          console.log('Auth status:', data);
+          const authButtons = document.getElementById('auth-buttons');
+
+          if (data.loggedIn) {
+            // User is logged in, show Sign-Out button
+            authButtons.innerHTML = `<button class="auth-button" onclick="signOut()">Sign-Out</button>`;
+          } else {
+            // User is not logged in, show Login and Sign-Up buttons
+            authButtons.innerHTML = `
+              <a href="/login" class="auth-button">Login</a>
+              <a href="/signup" class="auth-button">Sign-Up</a>
+            `;
+          }
+        })
+        .catch(error => console.error('Error checking auth status:', error));
+      });
+      function signOut() {
+        fetch('/logout', { method: 'POST' })
+          .then(response => {
+            if (response.ok) {
+              window.location.reload();
+            }
+          })
+        .catch(error => console.error('Error during logout:', error));
+      }
+
       var password = document.getElementById("new-password"), confirm_password = document.getElementById("confirm-password");
       var userEmail = document.getElementById("new-email");
       var userUsername = document.getElementById("new-username");

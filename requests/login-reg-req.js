@@ -78,4 +78,25 @@ router.post('/validate-username', (req, res) => {
   });
 });
 
+// Route to log out and end the session
+router.post('/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      return res.status(500).json({ error: 'Failed to log out' });
+    }
+    res.sendStatus(200); // Send success status
+  });
+});
+
+
+// Route to check if user is logged in
+router.get('/auth-status', (req, res) => {
+  if (req.session.logged_in) {
+      res.json({ loggedIn: true, username: req.session.user.username });
+  } else {
+      res.json({ loggedIn: false });
+  }
+});
+
+
 module.exports = router;

@@ -1,4 +1,23 @@
 document.addEventListener("DOMContentLoaded", async () => {
+    fetch('/auth-status')
+        .then(response => response.json())
+        .then(data => {
+          console.log('Auth status:', data);
+          const authButtons = document.getElementById('auth-buttons');
+
+          if (data.loggedIn) {
+            // User is logged in, show Sign-Out button
+            authButtons.innerHTML = `<button class="auth-button" onclick="signOut()">Sign-Out</button>`;
+          } else {
+            // User is not logged in, show Login and Sign-Up buttons
+            authButtons.innerHTML = `
+              <a href="/login" class="auth-button">Login</a>
+              <a href="/signup" class="auth-button">Sign-Up</a>
+            `;
+          }
+        })
+        .catch(error => console.error('Error checking auth status:', error));
+
     // Retrieve the recipe ID from the URL parameters
     const urlParams = new URLSearchParams(window.location.search);
     const recipeId = urlParams.get("id");
@@ -71,3 +90,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         return Math.ceil(words / 3); // Rough estimate: 3 words per second
     }
 });
+function signOut() {
+    fetch('/logout', { method: 'POST' })
+      .then(response => {
+        if (response.ok) {
+          window.location.reload();
+        }
+      })
+    .catch(error => console.error('Error during logout:', error));
+}
