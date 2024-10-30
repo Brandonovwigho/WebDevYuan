@@ -194,6 +194,18 @@
             }
       });
 
+      userEmail.addEventListener('keyup', function() {
+            if (emailError.style.display == "block") {
+              emailError.style.display = "none";
+            } 
+      });
+
+      userUsername.addEventListener('keyup', function() {
+            if (nameError.style.display == "block") {
+              nameError.style.display = "none";
+            } 
+      });
+
       function registerInfo(event) {
         event.preventDefault(); // Prevent form submission
 

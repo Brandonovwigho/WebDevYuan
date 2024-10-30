@@ -30,16 +30,44 @@ router.post('/login', (req, res) => {
     });
 });
 
+// Handles signup requests. If successful, it stores the email, username, and password into the database.
 router.post('/signup', (req, res) => {
   const { email, username, password } = req.body;
+  let verified = true;
 
-  db.run('INSERT INTO login (email, username, password) VALUES (?, ?, ?)', [email, username, password], function(err) {
-      if (err) {
-          console.error('Error inserting into database:', err.message);
-          return res.status(500).send('Internal Server Error');
-      }
-      res.json({ redirect: '/html/signup_complete.html' });
+  db.get('SELECT * FROM login WHERE lower(email) = ?', [email.toLowerCase()], (err, row) => {
+    if (err) {
+      console.error('Error querying database:', err.message);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    if (row) {
+      verified = false;
+    } 
   });
+  db.get('SELECT * FROM login WHERE lower(username) = ?', [username.toLowerCase()], (err, row) => {
+    if (err) {
+      console.error('Error querying database:', err.message);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    if (row) {
+      verified = false;
+    }
+  });
+
+  if(verified){
+    db.run('INSERT INTO login (email, username, password) VALUES (?, ?, ?)', [email, username, password], function(err) {
+        if (err) {
+            console.error('Error inserting into database:', err.message);
+            return res.status(500).send('Internal Server Error');
+        }
+        res.json({ redirect: '/html/signup_complete.html' });
+    });
+  }
+  else{
+    res.sendStatus(409);
+  }
 });
 
 
