@@ -335,3 +335,45 @@ nav ul li a{
     display: block; /* Show the active form */
     opacity: 1; /* Fade in */
 }
+
+/* Login-Signup and Sign-out buttons */
+#auth-buttons{
+    display: flex;
+    width: 190px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.auth-button {
+    padding: 10px 20px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid #FFC300;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.auth-button:hover {
+    background-color: #FFC300;
+    color: #000000;
+    cursor: pointer;
+}
+
+.username-label{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    max-width: 100px;
+    margin-left: 5px;
+}

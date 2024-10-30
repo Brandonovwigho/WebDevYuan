@@ -1,37 +1,41 @@
 document.addEventListener("DOMContentLoaded", () => {
-    fetch('/auth-status')
+  fetch('/auth-status')
       .then(response => response.json())
       .then(data => {
-        console.log('Auth status:', data);
-        const authButtons = document.getElementById('auth-buttons');
+          console.log('Auth status:', data);
+          const authButtons = document.getElementById('auth-buttons');
 
-        if (data.loggedIn) {
-          // User is logged in, show Sign-Out button
-          authButtons.innerHTML = `<button class="auth-button" onclick="signOut()">Sign-Out</button>`;
-        } else {
-          // User is not logged in, show Login and Sign-Up buttons
-          authButtons.innerHTML = `
-            <a href="/login" class="auth-button">Login</a>
-            <a href="/signup" class="auth-button">Sign-Up</a>
-          `;
-        }
+          if (data.loggedIn) {
+              // User is logged in, show Sign-Out button and username label
+              authButtons.innerHTML = `
+                  <button class="auth-button" onclick="signOut()">Sign-Out</button>
+                  <span class="username-label">Signed-in as: <strong>${data.username}</strong></span>
+              `;
+          } else {
+              // User is not logged in, show Login and Sign-Up buttons
+              authButtons.innerHTML = `
+                  <a href="/login" class="auth-button">Login</a>
+                  <a href="/signup" class="auth-button">Sign-Up</a>
+              `;
+          }
       })
       .catch(error => console.error('Error checking auth status:', error));
-    const recipesContainer = document.querySelector(".recipes-container");
+
+  const recipesContainer = document.querySelector(".recipes-container");
 
   // Function to fetch a random recipe from the API
-    async function fetchRecipe() {
-        console.log("fetch function");
-        try {
-            const response = await fetch('/api/random-recipe');
-            const data = await response.json();
-            console.log("Data here:");
-            console.log(data);
-            return data.meals[0];
-        } catch (error) {
-            console.error("Error fetching recipe:", error);
-        }
-    }
+  async function fetchRecipe() {
+      console.log("fetch function");
+      try {
+          const response = await fetch('/api/random-recipe');
+          const data = await response.json();
+          console.log("Data here:");
+          console.log(data);
+          return data.meals[0];
+      } catch (error) {
+          console.error("Error fetching recipe:", error);
+      }
+  }
 
   // Function to display a recipe card
   function displayRecipe(recipe) {
@@ -52,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Add a click event listener for each card
       recipeCard.addEventListener("click", () => {
-        window.location.href = `/html/recipe.html?id=${recipeId}`;
+          window.location.href = `/html/recipe.html?id=${recipeId}`;
       });
 
       // Append the recipe card to the container
@@ -81,12 +85,13 @@ document.addEventListener("DOMContentLoaded", () => {
       fetchRecipe().then(recipe => displayRecipe(recipe));
   }
 });
+
 function signOut() {
-    fetch('/logout', { method: 'POST' })
+  fetch('/logout', { method: 'POST' })
       .then(response => {
-        if (response.ok) {
-          window.location.reload();
-        }
+          if (response.ok) {
+              window.location.reload();
+          }
       })
       .catch(error => console.error('Error during logout:', error));
 }

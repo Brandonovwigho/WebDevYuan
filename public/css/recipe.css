@@ -79,6 +79,14 @@ nav ul li a{
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* Login-Signup and Sign-out buttons */
+#auth-buttons{
+    display: flex;
+    width: 190px;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .auth-buttons {
     display: flex;
     gap: 10px;
@@ -102,4 +110,13 @@ nav ul li a{
     background-color: #FFC300;
     color: #000000;
     cursor: pointer;
+}
+
+.username-label{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    max-width: 100px;
+    margin-left: 5px;
 }
