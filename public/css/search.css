@@ -84,6 +84,19 @@ nav ul li a{
     margin-top: 50px;
 }
 
+.search-div::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/images/search-bg.jpg') no-repeat center / cover;
+    height: calc(100vh);
+    opacity: 0.5; /* Adjust opacity as desired */
+    z-index: -1; /* Place behind content */
+}
+
 #recipe-search {
     padding: 10px;
     width: 400px;
@@ -123,6 +136,21 @@ nav ul li a{
     transform: translateY(-2px);
 }
 
+.category-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.category-button {
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
 
 /* recipe cards div */
 .recipes-container {
@@ -178,7 +206,7 @@ nav ul li a{
 .search-div {
     text-align: center;
     margin-top: 100px;
-    color: #FFC300;
+    color: #f3f1ec;
     font-size: 10vm;
     margin-bottom: 20px;
 }
@@ -205,15 +233,9 @@ nav ul li a{
 #auth-buttons{
     display: flex;
     width: 190px;
-    max-width: 200px;
     align-items: center;
     justify-content: space-between;
-}
-
-.auth-buttons {
-    display: flex;
-    gap: 10px;
-    margin-left: 20px;
+    gap: 20px;
 }
 
 .auth-button {
@@ -227,6 +249,7 @@ nav ul li a{
     text-align: center;
     text-decoration: none;
     transition: all 0.3s ease;
+    width: auto;
 }
 
 .auth-button:hover {
@@ -240,7 +263,17 @@ nav ul li a{
     display: inline-flex;
     flex-direction: column;
     align-items: center;
+    padding: 10px;
     font-size: 12px;
     max-width: 100px;
-    left: 5px;
+    border: 2px solid #f1e5c0;
+    border-radius: 30px;
+    flex-direction: row;
+    gap: 8px;
+    margin-right: 20px;
+}
+
+#profile{
+    height: 1.2rem;
+    margin: 0 auto;
 }

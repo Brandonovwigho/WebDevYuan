@@ -7,13 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
           if (data.loggedIn) {
               authButtons.innerHTML = `
-                  <button class="auth-button" onclick="signOut()">Sign-Out</button>
-                  <span class="username-label">Signed-in as: <strong>${data.username}</strong></span>
+                  <button class="auth-button" onclick="signOut()">SignOut</button>
+                  <span class="username-label"><img src="/images/person.png"/ alt="profile-icon" id="profile"><strong>${data.username}</strong></span>
               `;
           } else {
               authButtons.innerHTML = `
                   <a href="/login" class="auth-button">Login</a>
-                  <a href="/signup" class="auth-button">Sign-Up</a>
+                  <a href="/signup" class="auth-button">SignUp</a>
               `;
           }
       })

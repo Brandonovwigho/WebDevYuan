@@ -8,14 +8,14 @@ document.addEventListener("DOMContentLoaded", async () => {
           if (data.loggedIn) {
               // User is logged in, show Sign-Out button and username label
               authButtons.innerHTML = `
-                  <button class="auth-button" onclick="signOut()">Sign-Out</button>
-                  <span class="username-label">Signed-in as: <strong>${data.username}</strong></span>
+                  <button class="auth-button" onclick="signOut()">SignOut</button>
+                  <span class="username-label"><img src="/images/person.png"/ alt="profile-icon" id="profile"><strong>${data.username}</strong></span>
               `;
           } else {
               // User is not logged in, show Login and Sign-Up buttons
               authButtons.innerHTML = `
                   <a href="/login" class="auth-button">Login</a>
-                  <a href="/signup" class="auth-button">Sign-Up</a>
+                  <a href="/signup" class="auth-button">SignUp</a>
               `;
           }
       })

@@ -23,9 +23,10 @@
               <li><a href="#">Recipes</a></li>
             </ul>
           </nav>
-          <button class="button" onclick= "window.location.href = '/search'">Search Recipes</button>
-          <div id="auth-buttons">
-          </div>
+          <button class="button" onclick="window.location.href = '/search'">
+            Search Recipes
+          </button>
+          <div id="auth-buttons"></div>
         </div>
       </div>
     </header>
@@ -43,14 +44,16 @@
             id="recipe-search"
             placeholder="Search for a recipe..."
           />
-          <button type="button" onclick="search()" class="search-button">Search</button>
+          <button type="button" onclick="search()" class="search-button">
+            Search
+          </button>
         </form>
         <div class="category-section">
-          <button class="category-button">Breakfast</button>
-          <button class="category-button">Lunch</button>
-          <button class="category-button">Dinner</button>
-          <button class="category-button">Dessert</button>
-          <button class="category-button">Snack</button>
+          <button class="category-button" data-category="beef">Beef</button>
+          <button class="category-button" data-category="chicken">Chicken</button>
+          <button class="category-button" data-category="pork">Pork</button>
+          <button class="category-button" data-category="egg">Egg</button>
+          <button class="category-button" data-category="lamb">Lamb</button>
         </div>
       </div>
       <div class="popular-recipes">
@@ -60,6 +63,7 @@
       </div>
     </main>
 
-    <script src="/js/random-recipe.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/category.js"></script>
   </body>
 </html>
