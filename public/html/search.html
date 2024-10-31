@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/search.css" />
     <link rel="icon" type="image/x-icon" href="/images/logo-egg.png" />
     <title>Food Recipes</title>
   </head>
@@ -29,37 +29,22 @@
         </div>
       </div>
     </header>
-
-    <main>
-      <div class="search-image">
-        <div class="quote">
-          <h1>Good Food Brings People Together</h1>
-          <h3>What are you craving today?</h3>
-        </div>
-
+    <div class="search-div">
+        <h1>Search Recipes</h1>
         <form class="search-bar" onsubmit="event.preventDefault(); search();">
-          <input
+            <input
             type="text"
             id="recipe-search"
             placeholder="Search for a recipe..."
-          />
-          <button type="button" onclick="search()" class="search-button">Search</button>
+            />
+            <button type="button" onclick="search()" class="search-button">Search</button>
         </form>
-        <div class="category-section">
-          <button class="category-button">Breakfast</button>
-          <button class="category-button">Lunch</button>
-          <button class="category-button">Dinner</button>
-          <button class="category-button">Dessert</button>
-          <button class="category-button">Snack</button>
+    </div>
+    <div class="result-div">
+        <p id="search-text" style="display: none;"></p>
+        <div class="recipes-container">
         </div>
-      </div>
-      <div class="popular-recipes">
-        <h2>RECIPES YOU MIGHT LIKE</h2>
-        <!-- Recipe cards will be dynamically inserted here -->
-        <div class="recipes-container"></div>
-      </div>
-    </main>
-
-    <script src="/js/random-recipe.js"></script>
+    </div>
+    <script src="/js/search.js"></script>
   </body>
 </html>

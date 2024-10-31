@@ -6,9 +6,6 @@ const session = require('express-session');
 const app = express();
 app.use(session({secret:"RecipeSite!@#$%^&*()1234567890", resave:false, saveUninitialized:true}))
 
-// Connect to the SQLite database
-const db = require('./database');
-
 // Parse request bodies
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // Add JSON body parser
@@ -16,43 +13,23 @@ app.use(bodyParser.json()); // Add JSON body parser
 // Serve other static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Connect 'routes' files
-//const userRoute = require('./routes/user');
-//app.use('/user', userRoute);
-
 // Connect 'requests' files
 const loginReg = require('./requests/login-reg-req');
+const foodApi = require('./requests/api-call');
 app.use(loginReg); // File to manage all requests associated with the login/registration page.
+app.use(foodApi); // File to make api fetches from themealdb.com
 
-
-app.get('/api/random-recipe', async (req, res) => {
-  try {
-      const response = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
-      const data = await response.json();
-      res.json(data);
-  } catch (error) {
-      console.error('Error fetching recipe:', error);
-      res.status(500).json({ error: 'Failed to fetch recipe' });
-  }
-});
-app.post('/api/recipe-lookup', async(req,res) =>{
-  const {recipeId} = req.body;
-  try {
-    const response = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`
-    );
-    const data = await response.json();
-    res.json(data);
-} catch (error) {
-    console.error('Error fetching recipe:', error);
-    res.status(500).json({ error: 'Failed to fetch recipe' });
-}
-})
 app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, './public/html/login-reg.html'));
 })
 app.get('/signup', (req, res) => {
   res.sendFile(path.join(__dirname, './public/html/login-reg.html'));
+})
+app.get('/recipe', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/html/recipe.html'));
+})
+app.get('/search', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/html/search.html'));
 })
 /* app.get('/signup-complete', (req, res) => {
   res.sendFile(path.join(__dirname, './public/html/signup_complete.html'));

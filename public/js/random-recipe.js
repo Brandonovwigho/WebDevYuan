@@ -25,12 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to fetch a random recipe from the API
   async function fetchRecipe() {
-      console.log("fetch function");
       try {
           const response = await fetch('/api/random-recipe');
           const data = await response.json();
-          console.log("Data here:");
-          console.log(data);
           return data.meals[0];
       } catch (error) {
           console.error("Error fetching recipe:", error);
@@ -56,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Add a click event listener for each card
       recipeCard.addEventListener("click", () => {
-          window.location.href = `/html/recipe.html?id=${recipeId}`;
+          window.location.href = `/recipe?id=${recipeId}`;
       });
 
       // Append the recipe card to the container
@@ -84,7 +81,13 @@ document.addEventListener("DOMContentLoaded", () => {
   for (let i = 0; i < 3; i++) {
       fetchRecipe().then(recipe => displayRecipe(recipe));
   }
+
 });
+
+let searchQuery = document.getElementById("recipe-search");
+function search(){
+    window.location.href = `/search?query=${searchQuery.value}`;
+}
 
 function signOut() {
   fetch('/logout', { method: 'POST' })

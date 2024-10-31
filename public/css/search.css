@@ -79,28 +79,6 @@ nav ul li a{
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
-.search-image{  
-    height: 40rem;
-    margin: 8rem auto 3rem auto;
-    overflow: hidden;
-}
-
-.search-image::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('/images/search-img.jpg') no-repeat center / cover;
-    height: 52rem;
-    opacity: 0.5; /* Adjust opacity as desired */
-    z-index: -1; /* Place behind content */
-}
-.quote{
-    text-align: center;
-}
-
 .search-bar {
     text-align: center;
     margin-top: 50px;
@@ -145,38 +123,6 @@ nav ul li a{
     transform: translateY(-2px);
 }
 
-.category-section {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.category-button {
-    border: none;
-    padding: 10px 20px;
-    margin: 10px;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.category-button:hover {
-    transform: translateY(-2px);
-    opacity: 0.9;
-}
-
-.popular-recipes {
-    padding: 0 20px 40px 20px;
-    text-align: center;
-    margin: 0 auto;
-}
-
-.popular-recipes h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #FFC300;
-}
 
 /* recipe cards div */
 .recipes-container {
@@ -229,88 +175,31 @@ nav ul li a{
     color: #0073E6;
 }
 
-/* Login and Sign-Up CSS */
-.login-reg {
+.search-div {
     text-align: center;
     margin-top: 100px;
-  }
-  
-  .login-reg h1 {
     color: #FFC300;
-    font-size: 2rem;
+    font-size: 10vm;
     margin-bottom: 20px;
-  }
-  
-  .login-reg input {
-    display: block;
-    margin: 10px auto;
-    padding: 10px;
-    width: 300px;
-    border: none;
-    border-radius: 30px;
-    font-size: 1rem;
-    outline: none;
-    background-color: #ffffffeb;
-    color: #333;
-    padding-left: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .login-reg input::placeholder {
-    color: #aaa;
-  }
-  
-  .login-reg input:focus {
-    border: solid 1px;
-    border-color: #FFD60A;
-    background-color: #f9f8f6;
-    transition: all 0.25s ease-in-out;
-  }
-  
-  .submit-button {
-    padding: 10px 20px;
-    margin-top: 10px;
-    background-color: #FFC300;
-    border: none;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .submit-button:hover {
-    background-color: #FFD60A;
-    transform: translateY(-2px);
-  }
-
-.login-reg p{
-    font-size: 16px;
 }
-.login-reg a{
-    text-decoration: underline;
+
+#search-text {
+    font-size: 1.5rem; /* Matches the size of other headings */
+    color: #ffffff; /* Matches the site's primary color */
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle background to make it pop */
+    border-radius: 20px; /* Soft, rounded edges */
+    width: fit-content;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-weight: 400;
+}
+
+#search-text span{
     color: #FFC300;
 }
-.login-reg a:hover{
-    cursor: pointer;
-    color: #ffc400b8;
-}
 
-/* Additional styles for fade effect */
-.login-reg div {
-    min-width: 40vw;
-    max-width: 40vw;
-    margin-left: auto;
-    margin-right: auto;
-    opacity: 0; /* Start hidden */
-    transition: opacity 0.25s ease; /* Transition for fade effect */
-    display: none; /* Start as not displayed */
-}
-
-.login-reg div.active {
-    display: block; /* Show the active form */
-    opacity: 1; /* Fade in */
-}
 
 /* Login-Signup and Sign-out buttons */
 #auth-buttons{

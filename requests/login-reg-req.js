@@ -1,3 +1,5 @@
+// This file (login-reg-req.js) handles all requests associated with login, signup and authentication.
+
 const express = require('express');
 const router = express.Router();
 const path = require('path');
