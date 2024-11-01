@@ -16,8 +16,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Connect 'requests' files
 const loginReg = require('./requests/login-reg-req');
 const foodApi = require('./requests/api-call');
+const commentsReq = require('./requests/comment-req');
 app.use(loginReg); // File to manage all requests associated with the login/registration page.
 app.use(foodApi); // File to make api fetches from themealdb.com
+app.use(commentsReq);
 
 app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, './public/html/login-reg.html'));
