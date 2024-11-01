@@ -49,18 +49,25 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const recipeHTML = `
                     <div class="recipe-detail">
                         <h2 class="recipe-title">${recipe.strMeal}</h2>
-                        <img class="recipe-img" src="${recipe.strMealThumb}" alt="Image of ${recipe.strMeal}">
-                        
-                        <p class="recipe-prep-time">${estimatePrepTime(recipe.strInstructions)} minutes</p>
-                        
-                        <div class="recipe-ingredients">
-                            <h3>Ingredients</h3>
-                            <ul>${getIngredients(recipe)}</ul>
+                        <div class="recipe-img-prep-ingredients">
+                            <img class="recipe-img" src="${recipe.strMealThumb}" alt="Image of ${recipe.strMeal}">
+                            
+                            <div class="recipe-prep-ingredients">
+                                <div class="recipe-prep-time">
+                                    <img class="hourglass" src="/images/hourglass.png" alt="hourglass" />
+                                    <p>${estimatePrepTime(recipe.strInstructions)} minutes</p>
+                                </div>
+                                <div class="recipe-ingredients">
+                                    <h3>Ingredients</h3>
+                                    <ul>${getIngredients(recipe)}</ul>
+                                </div>
+                            </div>
                         </div>
-                        
-                        <div class="recipe-instructions">
-                            <h3>Instructions</h3>
-                            ${getNumberedInstructions(recipe.strInstructions)}
+                        <div class="instructions-container">
+                            <div class="recipe-instructions">
+                                <h3>Instructions</h3>
+                                ${getNumberedInstructions(recipe.strInstructions)}
+                            </div>
                         </div>
                     </div>
                 `;
