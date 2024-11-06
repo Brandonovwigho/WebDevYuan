@@ -4,7 +4,16 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const app = express();
-app.use(session({secret:"RecipeSite!@#$%^&*()1234567890", resave:false, saveUninitialized:true}))
+app.use(session({
+  secret: "RecipeSite!@#$%^&*()1234567890",
+  resave: false,
+  saveUninitialized: true,
+  cookie: { 
+    secure: false,             // Set to true if we're using HTTPS (secure)
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours cookie expire date
+    httpOnly: true             // Prevents client-side JavaScript from accessing the cookie (for security purposes)
+  }
+}));
 
 // Parse request bodies
 app.use(bodyParser.urlencoded({ extended: true }));

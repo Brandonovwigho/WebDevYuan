@@ -7,30 +7,39 @@ const db = require('../database');
 
 // Handles login requests. If successful login, then it saves session user.
 router.post('/login', (req, res) => {
-    const { username, password } = req.body;
-   
-    db.get('SELECT * FROM login WHERE lower(username) = ? AND password = ?', [username.toLowerCase(), password], (err, row) => {
-      if (err) {
-        console.error('Error querying database:', err.message);
-        res.status(500).send('Internal Server Error');
-        return;
-      }
-      if (row) {
-        // If valid username and password, then it will save the session.
-        req.session.save(() => {
-          req.session.logged_in = true;
-          req.session.user = {
-            username: row.username,   // Saves username.
-            email: row.email // Saves email
-          };
-          res.status(200).json({ redirect: '/' });
-        });
-      } 
-      else {
-        res.status(401).json({ error: 'Incorrect username or password.' });
-      }
-    });
+  const { username, password } = req.body;
+
+  db.get('SELECT * FROM login WHERE lower(username) = ? AND password = ?', [username.toLowerCase(), password], (err, row) => {
+    if (err) {
+      console.error('Error querying database:', err.message);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+
+    if (row) {
+      // Regenerate the session to create a new session ID
+      req.session.regenerate((err) => {
+        if (err) {
+          console.error('Error regenerating session:', err);
+          res.status(500).send('Internal Server Error');
+          return;
+        }
+
+        // Set user session data after regenerating session ID
+        req.session.logged_in = true;
+        req.session.user = {
+          username: row.username,
+          email: row.email
+        };
+
+        res.status(200).json({ redirect: '/' });
+      });
+    } else {
+      res.status(401).json({ error: 'Incorrect username or password.' });
+    }
+  });
 });
+
 
 // Handles signup requests. If successful, it stores the email, username, and password into the database.
 router.post('/signup', (req, res) => {
