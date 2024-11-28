@@ -135,9 +135,13 @@ nav ul li a{
 
 .recipe-ingredients ul {
     padding: 0 20px;
-    list-style: none;
     font-size: 1.1rem;
     color: #f9f8f6;
+}
+
+.recipe-ingredients ul li {
+    margin-bottom: 1.5rem;
+    list-style-type: disc; 
 }
 
 .recipe-prep-time {

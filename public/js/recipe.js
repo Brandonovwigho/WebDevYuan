@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const measure = recipe[`strMeasure${i}`];
             if (ingredient) ingredientsList.push(`<li>${measure} ${ingredient}</li>`);
         }
-        return ingredientsList.join("");
+        return `<ul>${ingredientsList.join("")}</ul>`;
     }
 
     function getNumberedInstructions(instructions) {
